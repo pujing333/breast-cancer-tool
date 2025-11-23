@@ -4,8 +4,15 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // 确保移动端访问时端口开放
   server: {
-    host: true
+    host: true,
+    proxy: {
+      // 本地开发时的代理配置
+      '/google-api': {
+        target: 'https://generativelanguage.googleapis.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/google-api/, '')
+      }
+    }
   }
 })

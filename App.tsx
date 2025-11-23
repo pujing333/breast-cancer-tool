@@ -52,7 +52,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+    // 使用 h-[100dvh] 代替 min-h-screen，完美适配手机浏览器动态地址栏
+    <div className="h-[100dvh] w-screen overflow-hidden bg-gray-50 font-sans text-gray-900 flex flex-col">
       {isAddingPatient ? (
         <AddPatientForm 
           onSave={handleSaveNewPatient} 
